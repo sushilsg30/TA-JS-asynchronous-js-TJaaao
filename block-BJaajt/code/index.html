@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Application</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      .githubImage,
+      .catImage {
+        display: block;
+        margin: 1rem auto;
+        width: 15rem;
+        border-radius: 50%;
+      }
+      .follower-img {
+        border-radius: 50%;
+        width: 4rem;
+        margin-left: 1rem;
+      }
+      input {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+        margin: 1rem 0;
+      }
+      h1 {
+        margin: 0;
+        background-color: rgb(55, 104, 104);
+        padding: 1rem 0;
+      }
+      div {
+        background-color: rgb(114, 78, 32);
+        padding: 1rem 0;
+        color: aliceblue;
+      }
+      button {
+        padding: 0.5rem 2rem;
+        background-color: bisque;
+        border: none;
+        border-radius: 1.2px;
+        margin-bottom: 1rem;
+      }
+      .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      small {
+        margin-right: 2rem;
+        font-size: 1.4rem;
+      }
+      h4 {
+        margin-bottom: 0.2rem;
+        font-size: 1.2rem;
+        padding: 0;
+        margin: 0;
+      }
+      h5 {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="getGithubUser">
+      <h1>Github User Finder</h1>
+      <input type="text" placeholder="Search Image" />
+      <img
+        class="githubImage"
+        src="https://images-na.ssl-images-amazon.com/images/I/A1FmoxiRJ3L.jpg"
+        alt="image"
+      />
+      <h4 class="name">UserName</h4>
+      <h5 class="username">@VijayChauhan</h5>
+      <div class="followers flex">
+        <small> Followers: </small
+        ><img
+          class="follower-img"
+          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
+          alt="followers"
+        />
+        <img
+          class="follower-img"
+          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
+          alt="followers"
+        />
+        <img
+          class="follower-img"
+          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
+          alt="followers"
+        />
+      </div>
+      <div class="followers flex">
+        <small> Following: </small
+        ><img
+          class="follower-img"
+          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
+          alt="followers"
+        />
+        <img
+          class="follower-img"
+          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
+          alt="followers"
+        />
+        <img
+          class="follower-img"
+          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
+          alt="followers"
+        />
+      </div>
+    </div>
+    <div class="getRandomImage">
+      <h1>Get Random Cat</h1>
+      <img
+        class="catImage"
+        src="https://images-na.ssl-images-amazon.com/images/I/A1FmoxiRJ3L.jpg"
+        alt="image"
+      />
+      <button>Get New Image</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
