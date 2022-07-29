@@ -13,9 +13,6 @@ function createUserUI(data) {
   console.log(githubImage);
   name.innerText = data.login;
   userName.innerText = data.id;
-  followerImg.src = data.forEach((item) => (item = data.followers_url));
-  //   followers.innerText = `Followers: ${data.followers}`;
-  //   following.innerText = `Following: ${data.following}`;
 }
 
 function handleChange(event) {
@@ -37,11 +34,11 @@ btn.addEventListener("click", () => {
   let xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
-    `https://api.unsplash.com//photos/random/?client_id=xpYPyUl-RAKPCesI-7sABAeFxAgpemX815dnJ8UVWGs`
+    `https://api.thecatapi.com/v1/images/search?limit=1&size=full`
   );
   xhr.onload = function () {
     let imageData = JSON.parse(xhr.response);
-    catImage.src = imageData.urls.small;
+    catImage.src = imageData[0].url;
   };
   xhr.send();
 });
