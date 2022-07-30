@@ -1,31 +1,42 @@
-let input = document.querySelector("input");
-let imageUL = document.querySelector(".imageUL");
-let img = document.querySelector("img");
+const url = `https://api.unsplash.com/photos/?client_id=VfL0XFpXFqTwGZlOJ7FRR6vSy-XsLxLqBcaNurVP2Pk`;
+const getSearchURL = (query) =>
+  `https://api.unsplash.com/search/photos/?query=${query}&client_id=VfL0XFpXFqTwGZlOJ7FRR6vSy-XsLxLqBcaNurVP2Pk`;
 
-function imageUI(data) {
-    img.src = data.regular;
+const root = document.querySelector(".imageUL");
+const searchElm = document.querySelector("input");
+
+function fetch(url, successHandler) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.onload = function () {
+    successHandler(JSON.parse(xhr.response));
+  };
+  xhr.onerror = function () {
+    console.log(" Something went Wrong ...");
+  };
+  xhr.send();
 }
 
-function handleKey(event) {
-  if (event.keyCode === 13 && input.value) {
-    const url = `https://api.unsplash.com/photos/random/?client_id=VfL0XFpXFqTwGZlOJ7FRR6vSy-XsLxLqBcaNurVP2Pk`;
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url)
-    xhr.onload = function () {
-        let imageData = JSON.parse(xhr.response);
-        imageUI(imageData);
-        console.log(imageData);
-    };
-    xhr.onerror = function () {
-        console.log(' Something went Wrong ...');
-    };
-    xhr.send();
+function displayImages(images) {
+  root.innerHTML = "";
+  images.forEach((image) => {
+    let li = document.createElement("li");
+    let img = document.createElement("img");
+    img.src = image.urls.thumb;
+    li.append(img);
+    root.append(li);
+  });
+}
+
+fetch(url, displayImages);
+
+function handleSearch(event) {
+  if (event.keyCode == 13 && searchElm.value) {
+    fetch(getSearchURL(searchElm.value), (searchResult) => {
+        displayImages(searchResult.results);
+    });
+    searchElm.value = '';
   }
 }
 
-input.addEventListener("keyup", handleKey);
-
-
-// xpYPyUl-RAKPCesI-7sABAeFxAgpemX815dnJ8UVWGs
-
-// https://api.unsplash.com//search/photos/?client_id=VfL0XFpXFqTwGZlOJ7FRR6vSy-XsLxLqBcaNurVP2Pk
+searchElm.addEventListener("keyup", handleSearch);
