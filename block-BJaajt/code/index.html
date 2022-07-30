@@ -4,42 +4,166 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search Application</title>
+    <title>Github Finder/ Random Cat Images</title>
     <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+         v2.0 | 20110126
+         License: none (public domain)
+      */
+
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
       body {
         text-align: center;
       }
-      .githubImage,
-      .catImage {
-        display: block;
-        margin: 1rem auto;
-        width: 15rem;
-      }
-      .follower-img {
-        border-radius: 50%;
-        width: 4rem;
-        margin-left: 1rem;
+      header {
+        padding: 1.5rem 0;
+        font-size: 3rem;
+        color: rgb(205, 202, 13);
+        font-weight: 700;
+        background-color: rgb(96, 72, 42);
       }
       input {
-        padding: 0.5rem 1.5rem;
-        font-size: 1rem;
-        margin: 1rem 0;
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
       }
-      h1 {
-        margin: 0;
-        background-color: rgb(55, 104, 104);
-        padding: 1rem 0;
+      .user-image {
+        border-radius: 50%;
+        border: 1px solid black;
+        width: 15rem;
+        margin-top: 2rem;
       }
-      div {
-        background-color: rgb(114, 78, 32);
-        padding: 1rem 0;
-        color: aliceblue;
+      .mainname {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-top: 0.5rem;
       }
-      button {
-        padding: 0.5rem 2rem;
-        background-color: bisque;
-        border: none;
-        border-radius: 1.2px;
+      .username {
+        font-weight: 500;
+        margin-top: 0.2rem;
         margin-bottom: 1rem;
       }
       .flex {
@@ -47,78 +171,122 @@
         justify-content: center;
         align-items: center;
       }
-      small {
-        margin-right: 2rem;
-        font-size: 1.4rem;
+      li img {
+        width: 4rem;
+        border-radius: 50%;
+        border: 1px solid black;
+        margin-left: 1rem;
       }
-      h4 {
-        margin-bottom: 0.2rem;
+      p {
         font-size: 1.2rem;
-        padding: 0;
-        margin: 0;
+        font-weight: 700;
       }
-      h5 {
-        padding: 0;
-        margin: 0;
+      .cats-heading {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        color: rgb(205, 202, 13);
+        background-color: rgb(96, 72, 42);
+        padding: 1rem 0;
+      }
+      .cat__image {
+        width: 20rem;
+        margin-top: 2rem;
+      }
+      button {
+        display: block;
+        margin: 2rem auto;
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+        color: rgb(205, 202, 13);
+        background-color: rgb(96, 72, 42);
+        border: none;
+        border-radius: 20px;
       }
     </style>
   </head>
   <body>
-    <div class="getGithubUser">
-      <h1>Github User Finder</h1>
-      <input type="text" placeholder="Search Image" />
-      <img
-        class="githubImage"
-        src="https://images-na.ssl-images-amazon.com/images/I/A1FmoxiRJ3L.jpg"
-        alt="image"
-      />
-      <h4 class="name">UserName</h4>
-      <h5 class="username">@VijayChauhan</h5>
-      <div class="followers flex">
-        <small> Followers: </small
-        ><img
-          class="follower-img"
-          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
-          alt="followers"
-        />
+    <header>Github User Finder</header>
+    <main>
+      <input type="text" placeholder="Enter a github username" />
+      <div class="info">
         <img
-          class="follower-img"
-          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
-          alt="followers"
+          class="user-image"
+          src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+          alt="sketch"
         />
-        <img
-          class="follower-img"
-          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
-          alt="followers"
-        />
+        <h3 class="mainname">Arya Stark</h3>
+        <p class="username">@arya</p>
       </div>
-      <div class="followers flex">
-        <small> Following: </small
-        ><img
-          class="follower-img"
-          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
-          alt="followers"
-        />
-        <img
-          class="follower-img"
-          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
-          alt="followers"
-        />
-        <img
-          class="follower-img"
-          src="https://i.pinimg.com/originals/54/d2/f8/54d2f8e6ca53147198ddfd69edf98798.png"
-          alt="followers"
-        />
+      <div class="details">
+        <div class="list flex">
+          <p>Followers:</p>
+          <ul class="flex followers">
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="list flex">
+          <p>Following:</p>
+          <ul class="flex following">
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+            <li>
+              <img
+                src="https://cdn.dribbble.com/users/3461545/screenshots/14512739/media/2f618ccd5449ea6d18bdc460c876cc79.jpg?compress=1&resize=400x300"
+                alt="sketch"
+              />
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="getRandomImage">
-      <h1>Get Random Cat</h1>
+    </main>
+    <div class="cats">
+      <h3 class="cats-heading">Get Random Cat</h3>
       <img
-        class="catImage"
-        src="https://images-na.ssl-images-amazon.com/images/I/A1FmoxiRJ3L.jpg"
-        alt="image"
+        class="cat__image"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+        alt="cat"
       />
-      <button>Get New Image</button>
+      <button>Get New Cat</button>
     </div>
     <script src="index.js"></script>
   </body>
