@@ -1,7 +1,11 @@
 1. Create a promise. Have it resolve with a value of `Promise Resolved!` in resolve after a delay of 1000ms, using `setTimeout`. Print the contents of the promise after it has been resolved by passing `console.log` to `.then`
 
 ```js
-// Your code
+let dataPromise = new Promise((resolve, reject) => {
+    resolve(setTimeout(() => "Promise Resolved!"), 1000ms).then(value => console.log(val))
+});
+
+
 ```
 
 2. Create another promise. Now have it reject with a value of `Rejected Promise!` without using `setTimeout`. Print the contents of the promise after it has been rejected by passing console.log to `.catch`
@@ -19,15 +23,15 @@
 4. What will be the output of the code below.
 
 ```js
-console.log('A');
+console.log("A");
 
 // Asynchronous code finises in 0 seconds (Callback Queue)
-setTimeout(() => console.log('B'), 0); // callback queue
+setTimeout(() => console.log("B"), 0); // callback queue
 
 // A promise that resolves right away (Microtask Queue)
-Promise.resolve().then(() => console.log('C'));
+Promise.resolve().then(() => console.log("C"));
 
-console.log('D');
+console.log("D");
 ```
 
 5. Write a function named `wait` that accepts `time` in ms returns a promise. The promise gets resolved after given time.
@@ -46,7 +50,8 @@ console.log('D');
 - Catch the error using `.catch`
 
 ```js
-// Your code
+let newData = 
+
 ```
 
 7. Do the following:
