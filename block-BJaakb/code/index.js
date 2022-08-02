@@ -1,40 +1,3 @@
-// function fetch(url) {
-//   return new Promise((resolve, reject) => {
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("GET", url);
-//     xhr.onload = () => resolve(JSON.parse(xhr.response));
-//     xhr.onerror = () => reject("Something went wrong!");
-//     xhr.send();
-//   });
-// }
-
-
-// let data = fetch(`https://api.github.com/users/nnnkit`);
-
-// function fetch(url, successHandler) {
-//   let xhr = new XMLHttpRequest();
-//   xhr.open("GET", url);
-//   xhr.onload = function () {
-//     successHandler(JSON.parse(xhr.response));
-//   };
-//   xhr.onerror = function () {
-//     console.log(" Something went Wrong ...");
-//   };
-//   xhr.send();
-// }
-
-
-// function fetch(url, successHandler) {
-//   return new Promise((resolve, reject) => {
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("GET", url);
-//     xhr.onload = () => resolve(successHandler(JSON.parse(xhr.response)));
-//     xhr.onerror = () => reject(" Something went Wrong ...");
-//     xhr.send();
-//   });
-// }
-
-
 const url = `https://api.unsplash.com/photos/?client_id=VfL0XFpXFqTwGZlOJ7FRR6vSy-XsLxLqBcaNurVP2Pk`;
 const getSearchURL = (query) =>
   `https://api.unsplash.com/search/photos/?query=${query}&client_id=VfL0XFpXFqTwGZlOJ7FRR6vSy-XsLxLqBcaNurVP2Pk`;
@@ -42,11 +5,11 @@ const getSearchURL = (query) =>
 const root = document.querySelector(".imageUL");
 const searchElm = document.querySelector("input");
 
-function fetch(url, successHandler) {
+function fetch(url) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", url);
-    xhr.onload = () => resolve(successHandler(JSON.parse(xhr.response)));
+    xhr.onload = () => resolve(JSON.parse(xhr.response));
     xhr.onerror = () => reject(" Something went Wrong ...");
     xhr.send();
   });
@@ -63,13 +26,18 @@ function displayImages(images) {
   });
 }
 
-fetch(url, displayImages);
+fetch(url)
+  .then(displayImages)
+  .catch((error) => console.log(error));
 
 function handleSearch(event) {
   if (event.keyCode == 13 && searchElm.value) {
-    fetch(getSearchURL(searchElm.value), (searchResult) => {
-      displayImages(searchResult.results);
-    });
+    fetch(getSearchURL(searchElm.value))
+      .then((searchResult) => {
+        displayImages(searchResult.results);
+      })
+      .catch((error) => console.log(error));
+
     searchElm.value = "";
   }
 }
