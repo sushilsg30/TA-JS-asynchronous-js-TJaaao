@@ -151,12 +151,15 @@ table {
     width: 40%;
     margin-left: 1rem;
 }
+.article-width {
+  width: 300px;
+}
 .article-width h3 {
     margin: 1rem 0;
     text-align: center;
 }
 .img-width {
-    width: 100%
+    width: 50%;
 }
 .source {
     background-color: aqua;
